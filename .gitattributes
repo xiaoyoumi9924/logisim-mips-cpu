@@ -1,0 +1,12 @@
+# 让 Git 保持 Logisim 写出的文件原样，避免每次保存都产生"整文件改写"的假差异
+*.circ -text
+
+*.ps1  text eol=crlf
+*.cmd  text eol=crlf
+*.md   text eol=lf
+
+*.pdf  binary
+*.docx binary
+*.png  binary
+*.jpg  binary
+*.gif  binary
