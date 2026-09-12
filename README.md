@@ -7,6 +7,10 @@
 从触发器一路搭到五级流水线：8 个 Logisim-evolution 工程，覆盖计数器、乘法器、
 寄存器堆、64 KB 存储器、ALU、硬布线控制器，以及最终的单周期与流水线 MIPS CPU。
 
+![单周期 MIPS CPU 数据通路](docs/images/4.1-单周期CPU.png)
+
+<sub>单周期 CPU（[`circuits/4.1-单周期CPU.circ`](circuits/4.1-单周期CPU.circ)）：取指 → 译码 → 执行 → 访存 → 写回，包含 CU、ALU、32×32 寄存器堆、指令 ROM 与数据 RAM。</sub>
+
 
 
 ## 快速开始
