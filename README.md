@@ -38,16 +38,19 @@
 
 ### 第二步：打开 `circuits/` 里的电路
 
-所有电路都在 **`circuits/`** 目录下，每个文件都能独立打开，按编号顺序看会顺一些：
+所有电路都在 **`circuits/`** 目录下，点表格里的文件名就能打开。每个文件都是独立的，
+按顺序看会顺一些（先打基础，再拼整机）：
 
-1. [`circuits/2.2-计数器.circ`](circuits/2.2-计数器.circ) —— 时序电路基础：模 13 计数器
-2. [`circuits/2.3-乘法器.circ`](circuits/2.3-乘法器.circ) —— 时序电路基础：8 位移位-相加乘法器
-3. [`circuits/3.1-寄存器堆.circ`](circuits/3.1-寄存器堆.circ) —— 四大部件：32×32 位寄存器堆
-4. [`circuits/3.2-存储器.circ`](circuits/3.2-存储器.circ) —— 四大部件：64 KB ROM / RAM 与读写自检
-5. [`circuits/3.3-ALU模块.circ`](circuits/3.3-ALU模块.circ) —— 四大部件：32 位 ALU
-6. [`circuits/3.4-控制器.circ`](circuits/3.4-控制器.circ) —— 四大部件：硬布线控制器
-7. [`circuits/4.1-单周期CPU.circ`](circuits/4.1-单周期CPU.circ) —— 整机：单周期 MIPS CPU
-8. [`circuits/4.2-流水线CPU.circ`](circuits/4.2-流水线CPU.circ) —— 整机：五级流水线 CPU（数据前推 + 冒险暂停）
+| # | 电路文件 | 阶段 | 主要子电路 | 内容 |
+| :-: | --- | --- | --- | --- |
+| 1 | [`2.2-计数器.circ`](circuits/2.2-计数器.circ) | 时序基础 | `count13`、`count_pro` | 模 13 计数器，带进位输出与数码管显示 |
+| 2 | [`2.3-乘法器.circ`](circuits/2.3-乘法器.circ) | 时序基础 | `muti`、`control`、`shift`、`Add_1`、`Add_7` | 8 位移位-相加乘法器，计数器控制迭代 |
+| 3 | [`3.1-寄存器堆.circ`](circuits/3.1-寄存器堆.circ) | 四大部件 | `MIPS_32x32_reg`、`group_0`、`group_123` | 32×32 位寄存器堆：双读口、单写口、写地址译码 |
+| 4 | [`3.2-存储器.circ`](circuits/3.2-存储器.circ) | 四大部件 | `ROM_64KB_32bit`、`RAM_64KB_32bit`、`RAM_pro` | 64 KB×32 位 ROM / RAM，含读写自检 |
+| 5 | [`3.3-ALU模块.circ`](circuits/3.3-ALU模块.circ) | 四大部件 | `ALU` | 32 位 ALU：加、减、或、比较置位、移位 |
+| 6 | [`3.4-控制器.circ`](circuits/3.4-控制器.circ) | 四大部件 | `cu`、`alu_control` | 硬布线主控 + ALU 控制，输出全部控制信号 |
+| 7 | [`4.1-单周期CPU.circ`](circuits/4.1-单周期CPU.circ) | 整机 | 上述模块 + `Count`、`Add4`、`EX_control` | 单周期 MIPS：取指 / 译码 / 执行 / 访存 / 写回 |
+| 8 | [`4.2-流水线CPU.circ`](circuits/4.2-流水线CPU.circ) | 整机 | `IFID`、`IDEX`、`EXMEM`、`MEMWB`、`Forwarding_controlA/B`、`Hazard` | 五级流水：数据前推 + load-use 冒险暂停 |
 
 打开后，用工具栏上的时钟按钮（或快捷键 `Ctrl+T`）一下一下打节拍，配合电路里的
 数码管和 LED 观察寄存器、PC、ALU 结果的变化。每个电路具体怎么看，写在
@@ -80,19 +83,6 @@ pwsh -File scripts\verify-circuits.ps1
 ├── LICENSE                   MIT
 └── README.md
 ```
-
-## 电路清单
-
-| 任务点 | 工程 | 主要子电路 | 做了什么 |
-| --- | --- | --- | --- |
-| 2.2 计数器 | [`circuits/2.2-计数器.circ`](circuits/2.2-计数器.circ) | `count13`、`count_pro` | 模 13 同步计数器，带进位输出与数码管显示 |
-| 2.3 乘法器 | [`circuits/2.3-乘法器.circ`](circuits/2.3-乘法器.circ) | `muti`、`control`、`shift`、`Add_1`、`Add_7` | 8 位移位-相加乘法器，计数器控制迭代 |
-| 3.1 寄存器堆 | [`circuits/3.1-寄存器堆.circ`](circuits/3.1-寄存器堆.circ) | `MIPS_32x32_reg`、`group_0`、`group_123` | 32×32 位寄存器堆：双读口、单写口、写地址译码 |
-| 3.2 存储器 | [`circuits/3.2-存储器.circ`](circuits/3.2-存储器.circ) | `ROM_64KB_32bit`、`RAM_64KB_32bit`、`RAM_pro` | 64 KB×32 位 ROM/RAM，含读写自检电路 |
-| 3.3 ALU | [`circuits/3.3-ALU模块.circ`](circuits/3.3-ALU模块.circ) | `ALU` | 32 位 ALU：加、减、或、比较置位、移位，3 位控制码选通 |
-| 3.4 控制器 | [`circuits/3.4-控制器.circ`](circuits/3.4-控制器.circ) | `cu`、`alu_control` | 硬布线主控 + ALU 控制，输出全部控制信号 |
-| 4.1 单周期 CPU | [`circuits/4.1-单周期CPU.circ`](circuits/4.1-单周期CPU.circ) | `main` + 上述模块 | 完整单周期 MIPS：取指 / 译码 / 执行 / 访存 / 写回 |
-| 4.2 流水线 CPU | [`circuits/4.2-流水线CPU.circ`](circuits/4.2-流水线CPU.circ) | `IFID`、`IDEX`、`EXMEM`、`MEMWB`、`Forwarding_controlA/B`、`Hazard` | 五级流水：数据前推 + load-use 冒险暂停 |
 
 ## 支持的指令
 
