@@ -7,34 +7,29 @@
 从触发器一路搭到五级流水线：8 个 Logisim-evolution 工程，覆盖计数器、乘法器、
 寄存器堆、64 KB 存储器、ALU、硬布线控制器，以及最终的单周期与流水线 MIPS CPU。
 
-> A MIPS CPU built from scratch in Logisim-evolution - counter, multiplier, register
-> file, 64 KB memory, ALU, hardwired controller, and both a single-cycle and a
-> 5-stage pipelined CPU.
+
 
 ## 快速开始
 
-### 第一步：下载并安装 Logisim-evolution 3.9.0
+### 第一步：安装 Logisim-evolution 3.9.0
 
-本项目所有电路都是用 **Logisim-evolution 3.9.0** 画的，请使用这个版本打开
-（老版 Logisim 和某些新版本可能无法正确加载）。
+本项目所有电路都是用 **Logisim-evolution 3.9.0** 画的，请用这个版本打开。
+安装包已经放在仓库里，**不用去官网下载**：
 
-1. 打开官方发布页：
-   **[github.com/logisim-evolution/logisim-evolution/releases](https://github.com/logisim-evolution/logisim-evolution/releases)**
-2. 找到 **v3.9.0** 那一版，按自己的系统下载安装包：
-
-   | 系统 | 要下载的文件 |
-   | --- | --- |
-   | Windows 64 位 | `logisim-evolution-3.9.0-x86_64.msi`（如果下到的是 `.zip`，解压后里面就是同一个 MSI） |
-   | macOS | `logisim-evolution-3.9.0-*.dmg` |
-   | Linux | `logisim-evolution-3.9.0-*.deb` / `.rpm` / `.AppImage` |
-
-3. 双击安装。**Windows 安装时会弹出 UAC 管理员权限提示，点「是」即可**：
-   MSI 默认把程序装到 `C:\Program Files\logisim-evolution`，还会注册 `.circ`
-   文件关联，所以需要管理员权限。一路「下一步」装完就行。
+1. 打开 **[`tools/logisim-evolution-3.9.0-x86_64.msi`](tools/logisim-evolution-3.9.0-x86_64.msi)**
+   —— 官方 v3.9.0 的 Windows 64 位安装包（约 81 MB）。如果你拿到的是 zip 压缩包，
+   解压后就能看到它。
+2. 双击安装，**弹出 UAC 管理员权限提示时点「是」** —— MSI 默认把程序装到
+   `C:\Program Files\logisim-evolution`，还要注册 `.circ` 文件关联，所以需要管理员
+   权限，一路「下一步」装完即可。安装包自带运行库，**不需要另外装 Java**。
+3. 图文安装步骤见课程提供的
+   **[`docs/Logisim安装及使用说明 v1.0.docx`](docs/Logisim安装及使用说明%20v1.0.docx)**。
 4. 装好后从开始菜单启动，或者直接双击任意 `.circ` 文件打开。
 
-> 没有管理员权限、或者不想装进系统里？仓库里的 `tools/setup-logisim.ps1`
-> 可以从同一个官方安装包解出一份免安装版，见[详细说明](docs/详细设计说明.md#14-免安装方式可选)。
+> macOS / Linux 用不了这个 MSI，请到[官方 Release](https://github.com/logisim-evolution/logisim-evolution/releases)
+> 下载 3.9.0 对应平台的安装包。没有管理员权限的话，可以用 `tools/setup-logisim.ps1`
+> 从同一个 MSI 解出免安装版，见[详细说明](docs/详细设计说明.md#14-免安装方式可选)。
+
 
 ### 第二步：打开 `circuits/` 里的电路
 
@@ -56,13 +51,6 @@
 数码管和 LED 观察寄存器、PC、ALU 结果的变化。每个电路具体怎么看，写在
 [详细说明](docs/详细设计说明.md)里。
 
-### 第三步（可选）：一键自检
-
-不打开图形界面也能检查所有电路是否完好（需要系统里有 Java 17 以上）：
-
-```powershell
-pwsh -File scripts\verify-circuits.ps1
-```
 
 ## 项目结构
 
@@ -79,7 +67,9 @@ pwsh -File scripts\verify-circuits.ps1
 ├── scripts/
 │   ├── logisim.cmd           启动免安装版 Logisim（用 tools 里的那份）
 │   └── verify-circuits.ps1   无界面加载全部电路做自检
-├── tools/setup-logisim.ps1   从官方安装包解出免安装版 Logisim
+├── tools/
+│   ├── logisim-evolution-3.9.0-x86_64.msi   Windows 安装包（约 81 MB）← 第一步用这个
+│   └── setup-logisim.ps1                    从上面这个安装包解出免安装版
 ├── LICENSE                   MIT
 └── README.md
 ```
@@ -97,8 +87,7 @@ pwsh -File scripts\verify-circuits.ps1
 | `lw` / `sw` | I | `100011` / `101011` | — | 取字 / 存字 |
 | `stp` | — | `111111` | — | 停机，停止 PC 更新 |
 
-两个 CPU 的指令 ROM 里都放了测试程序（其中一段循环会触发 load-use 冒险），
-可以直接打时钟观察，逐条反汇编见[详细说明](docs/详细设计说明.md#9-内置测试程序)。
+
 
 ## 详细文档
 
@@ -110,5 +99,3 @@ pwsh -File scripts\verify-circuits.ps1
 
 电路设计部分以 [MIT License](LICENSE) 开源，欢迎取用、修改、用在自己的实验课上。
 
-> 请遵守所在学校的学术诚信要求：可以参考实现思路，但不要直接把本仓库当作
-> 自己的课程作业提交。
