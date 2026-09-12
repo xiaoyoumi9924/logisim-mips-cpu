@@ -1,4 +1,4 @@
-# 计算机组成原理课程设计 · 基于 Logisim-evolution 的 MIPS CPU
+ 基于 Logisim-evolution 设计的 MIPS CPU
 
 ![Logisim-evolution](https://img.shields.io/badge/Logisim--evolution-3.9.0-1f6feb)
 ![License](https://img.shields.io/badge/license-MIT-3fb950)
