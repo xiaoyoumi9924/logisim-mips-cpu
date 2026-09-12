@@ -1,4 +1,4 @@
- 基于 Logisim-evolution 设计的 MIPS CPU
+ # 基于 Logisim-evolution 设计的 MIPS CPU
 
 ![Logisim-evolution](https://img.shields.io/badge/Logisim--evolution-3.9.0-1f6feb)
 ![License](https://img.shields.io/badge/license-MIT-3fb950)
@@ -42,7 +42,7 @@
 | 8 | [`4.2-流水线CPU.circ`](circuits/4.2-流水线CPU.circ) | 整机 | `IFID`、`IDEX`、`EXMEM`、`MEMWB`、`Forwarding_controlA/B`、`Hazard` | 五级流水：数据前推 + load-use 冒险暂停 |
 
 
-[详细说明](docs/详细设计说明.md)里。
+[详细说明](docs/详细设计说明.md)。
 
 
 ## 项目结构
