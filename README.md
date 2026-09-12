@@ -13,28 +13,22 @@
 
 ### 第一步：安装 Logisim-evolution 3.9.0
 
-本项目所有电路都是用 **Logisim-evolution 3.9.0** 画的，请用这个版本打开。
-安装包已经备好，**不用去官网找**：
+本项目所有电路都是用 **Logisim-evolution 3.9.0** 画的。
 
 1. 到 **[Releases 页面](../../releases/latest)** 下载
-   **`logisim-evolution-3.9.0-x86_64.msi`** —— 官方 v3.9.0 的 Windows 64 位安装包
-   （约 81 MB）。如果你拿到的是课程发的 zip 压缩包，解压后也是同一个文件。
-2. 双击安装，**弹出 UAC 管理员权限提示时点「是」** —— MSI 默认把程序装到
-   `C:\Program Files\logisim-evolution`，还要注册 `.circ` 文件关联，所以需要管理员
-   权限，一路「下一步」装完即可。安装包自带运行库，**不需要另外装 Java**。
-3. 图文安装步骤见课程提供的
+   **`logisim-evolution-3.9.0-x86_64.msi`**
+2. 双击安装，**弹出 UAC 管理员权限提示时点「是」**
+3. 图文安装步骤见
    **[`docs/Logisim安装及使用说明 v1.0.docx`](docs/Logisim安装及使用说明%20v1.0.docx)**。
 4. 装好后从开始菜单启动，或者直接双击任意 `.circ` 文件打开。
 
 > macOS / Linux 用不了这个 MSI，请到[官方 Release](https://github.com/logisim-evolution/logisim-evolution/releases)
-> 下载 3.9.0 对应平台的安装包。没有管理员权限的话，可以用 `tools/setup-logisim.ps1`
-> 从同一个 MSI 解出免安装版，见[详细说明](docs/详细设计说明.md#14-免安装方式可选)。
+
 
 
 ### 第二步：打开 `circuits/` 里的电路
 
-所有电路都在 **`circuits/`** 目录下，点表格里的文件名就能打开。每个文件都是独立的，
-按顺序看会顺一些（先打基础，再拼整机）：
+所有电路都在 **`circuits/`** 目录下，点表格里的文件名就能打开。
 
 | # | 电路文件 | 阶段 | 主要子电路 | 内容 |
 | :-: | --- | --- | --- | --- |
@@ -47,8 +41,7 @@
 | 7 | [`4.1-单周期CPU.circ`](circuits/4.1-单周期CPU.circ) | 整机 | 上述模块 + `Count`、`Add4`、`EX_control` | 单周期 MIPS：取指 / 译码 / 执行 / 访存 / 写回 |
 | 8 | [`4.2-流水线CPU.circ`](circuits/4.2-流水线CPU.circ) | 整机 | `IFID`、`IDEX`、`EXMEM`、`MEMWB`、`Forwarding_controlA/B`、`Hazard` | 五级流水：数据前推 + load-use 冒险暂停 |
 
-打开后，用工具栏上的时钟按钮（或快捷键 `Ctrl+T`）一下一下打节拍，配合电路里的
-数码管和 LED 观察寄存器、PC、ALU 结果的变化。每个电路具体怎么看，写在
+
 [详细说明](docs/详细设计说明.md)里。
 
 
@@ -73,8 +66,7 @@
 └── README.md
 ```
 
-> Logisim 安装包（约 81 MB）放在仓库的 [Releases](../../releases/latest) 附件里，
-> 不放进代码目录，免得每次 clone 都要多下一份。
+
 
 ## 支持的指令
 
