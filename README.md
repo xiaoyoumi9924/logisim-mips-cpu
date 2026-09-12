@@ -14,11 +14,11 @@
 ### 第一步：安装 Logisim-evolution 3.9.0
 
 本项目所有电路都是用 **Logisim-evolution 3.9.0** 画的，请用这个版本打开。
-安装包已经放在仓库里，**不用去官网下载**：
+安装包已经备好，**不用去官网找**：
 
-1. 打开 **[`tools/logisim-evolution-3.9.0-x86_64.msi`](tools/logisim-evolution-3.9.0-x86_64.msi)**
-   —— 官方 v3.9.0 的 Windows 64 位安装包（约 81 MB）。如果你拿到的是 zip 压缩包，
-   解压后就能看到它。
+1. 到 **[Releases 页面](../../releases/latest)** 下载
+   **`logisim-evolution-3.9.0-x86_64.msi`** —— 官方 v3.9.0 的 Windows 64 位安装包
+   （约 81 MB）。如果你拿到的是课程发的 zip 压缩包，解压后也是同一个文件。
 2. 双击安装，**弹出 UAC 管理员权限提示时点「是」** —— MSI 默认把程序装到
    `C:\Program Files\logisim-evolution`，还要注册 `.circ` 文件关联，所以需要管理员
    权限，一路「下一步」装完即可。安装包自带运行库，**不需要另外装 Java**。
@@ -68,11 +68,13 @@
 │   ├── logisim.cmd           启动免安装版 Logisim（用 tools 里的那份）
 │   └── verify-circuits.ps1   无界面加载全部电路做自检
 ├── tools/
-│   ├── logisim-evolution-3.9.0-x86_64.msi   Windows 安装包（约 81 MB）← 第一步用这个
-│   └── setup-logisim.ps1                    从上面这个安装包解出免安装版
+│   └── setup-logisim.ps1     从官方安装包解出免安装版
 ├── LICENSE                   MIT
 └── README.md
 ```
+
+> Logisim 安装包（约 81 MB）放在仓库的 [Releases](../../releases/latest) 附件里，
+> 不放进代码目录，免得每次 clone 都要多下一份。
 
 ## 支持的指令
 
@@ -98,4 +100,3 @@
 ## 许可
 
 电路设计部分以 [MIT License](LICENSE) 开源，欢迎取用、修改、用在自己的实验课上。
-
