@@ -9,15 +9,15 @@
 
 ![单周期 MIPS CPU 数据通路](docs/images/4.1-单周期CPU.png)
 
-<sub>单周期 CPU（[`circuits/4.1-单周期CPU.circ`](circuits/4.1-单周期CPU.circ)）：取指 → 译码 → 执行 → 访存 → 写回，包含 CU、ALU、32×32 寄存器堆、指令 ROM 与数据 RAM。</sub>
+<sub>单周期 CPU（[`circuits/4.1-单周期CPU.circ`](circuits/4.1-单周期CPU.circ)）</sub>
 
 
 
 ## 快速开始
 
-### 第一步：安装 Logisim-evolution 3.9.0
+### 第一步：安装 Logisim-evolution
 
-本项目所有电路都是用 **Logisim-evolution 3.9.0** 画的。
+本项目所有电路都是用 **Logisim-evolution**。
 
 1. 到 **[Releases 页面](../../releases/latest)** 下载
    **`logisim-evolution-3.9.0-x86_64.msi`**
